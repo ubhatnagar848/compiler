@@ -1,0 +1,65 @@
+┌──(ksgsaketh㉿Saketh)-[~/compiler/lab1]
+└─$ gcc dfa_to_re.c -o bin_2
+
+┌──(ksgsaketh㉿Saketh)-[~/compiler/lab1]
+└─$ ./bin_2
+=== DFA TO REGULAR GRAMMAR CONVERTER ===
+
+Enter number of states: 3
+Enter number of symbols: 2
+Enter symbols: 0 1
+Enter states: A B C
+Enter start state index (0 to 2): 0
+Enter number of final states: 1
+Enter final state indices: 2
+
+Enter transition function δ:
+(Enter '-' for no transition)
+δ[A,0] = B
+δ[A,1] = -
+δ[B,0] = B
+δ[B,1] = C
+δ[C,0] = -
+δ[C,1] = C
+
+Transition Table:
+  0 1 
+A B  -
+B B  C
+C -  C
+
+=== REGULAR GRAMMAR FROM DFA ===
+
+Non-terminals (N): {A, B, C}
+Terminals (T): {0, 1}
+Start Symbol (S): A
+
+Productions (P):
+ A -> 0B
+ B -> 0B
+ B -> 1C
+ B -> 1
+ C -> 1C
+ C -> 1
+ C -> ε
+
+Grammar G = (N, T, P, S) where:
+ N = Non-terminals
+ T = Terminals
+ P = Productions
+ S = Start Symbol
+
+Enter string to test: 00000111
+
+=== STRING SIMULATION ===
+String: 00000111
+δ[A,0] = B
+δ[B,0] = B
+δ[B,0] = B
+δ[B,0] = B
+δ[B,0] = B
+δ[B,1] = C
+δ[C,1] = C
+δ[C,1] = C
+Final state: C
+Result: ACCEPTED

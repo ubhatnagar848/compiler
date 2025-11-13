@@ -1,0 +1,45 @@
+┌──(ksgsaketh㉿Saketh)-[~/compiler/lexical_analyzer]
+└─$ flex lexical_analyzer.l
+
+┌──(ksgsaketh㉿Saketh)-[~/compiler/lexical_analyzer]
+└─$ gcc lex.yy.c -o bin_tst -lfl
+
+┌──(ksgsaketh㉿Saketh)-[~/compiler/lexical_analyzer]
+└─$ ./bin_tst input.txt 
+Lexical Analysis Results:
+=========================
+KEYWORD: int
+IDENTIFIER: main
+SYMBOL: (
+SYMBOL: )
+SYMBOL: {
+UNKNOWN:
+IDENTIFIER: printf
+SYMBOL: (
+STRING: "Hello, World!\n"
+SYMBOL: )
+SYMBOL: ;
+UNKNOWN:
+KEYWORD: int
+IDENTIFIER: a
+Relational/Assignment OPERATOR: =
+IDENTIFIER: b
+Arithmetic OPERATOR: +
+NUMBER: 5
+SYMBOL: ;
+UNKNOWN:
+KEYWORD: if
+SYMBOL: (
+IDENTIFIER: a
+Relational/Assignment OPERATOR: >=
+NUMBER: 0
+Logical OPERATOR: &&
+IDENTIFIER: b
+Logical OPERATOR: !=
+NUMBER: 2
+SYMBOL: )
+KEYWORD: return
+IDENTIFIER: a
+SYMBOL: ;
+UNKNOWN:
+SYMBOL: }

@@ -1,0 +1,30 @@
+Enter number of states: 6
+Enter number of symbols: 1
+Enter symbols: a
+Enter states: q0 q1 q2 q3 q4 q5
+Enter start state index: 0
+Enter number of final states: 2
+Enter final state indices: 3 5
+
+Enter transition function ╬┤:
+╬┤[q0,a] = q1,q4
+╬┤[q1,a] = q2
+╬┤[q2,a] = q3
+╬┤[q3,a] = -
+╬┤[q4,a] = q5
+╬┤[q5,a] = q4
+
+DFA Transition Table:
+ a
+q0 (0)  q1
+q1 (14)  q2
+q2 (25)* q3
+q3 (34)* q4
+q4 (5)* q5
+q5 (4)  q4
+
+Enter string: aaa
+
+String: aaa
+╬┤[q0,a] = ╬┤[q1,a] = ╬┤[q2,a] = q3
+ACCEPTED

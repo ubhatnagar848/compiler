@@ -1,0 +1,46 @@
+
+┌──(ksgsaketh㉿Saketh)-[~/compiler/parsing]
+└─$ gcc operator_precedence.c -o bin
+
+┌──(ksgsaketh㉿Saketh)-[~/compiler/parsing]
+└─$ ./bin
+=== Operator Precedence Parser ===
+NOTE: Assumes a valid operator grammar (no adjacent non-terminals, no epsilon productions).    
+
+Enter number of production rules (e.g., E->E+T|T is one rule): 3
+Enter productions (e.g., E->E+T|T or F->id):
+E ->E+T|T
+T ->T*F|F
+F ->id
+
+--- LEADING Sets ---
+LEADING(E): { + * i }
+LEADING(T): { * i }
+LEADING(F): { i }
+
+--- TRAILING Sets ---
+TRAILING(E): { + * i }
+TRAILING(T): { * i }
+TRAILING(F): { i }
+
+--- Operator Precedence Table ---
+    +   *   i   $
++   >   <   <   >
+*   >   >   <   >
+i   >   >       >
+$   <   <   <
+
+Enter input string to parse (end with $): id+id
+
+--- Parsing Steps ---
+Stack                     Input                Action
+------------------------------------------------------------------
+$                         i+i                  Shift i
+$i                        +i                   Reduce
+$                         +i                   Shift +
+$+                        i                    Shift i
+$+i                                            Reduce
+$+                                             Reduce
+$                                              Accept
+
+Input string is ACCEPTED.

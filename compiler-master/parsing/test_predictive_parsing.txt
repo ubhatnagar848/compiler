@@ -1,0 +1,61 @@
+┌──(ksgsaketh㉿Saketh)-[~/compiler/parsing]
+└─$ gcc predictive_parsing.c -o bin_1
+
+┌──(ksgsaketh㉿Saketh)-[~/compiler/parsing]
+└─$ ./bin_1 
+=== Predictive Parser ===
+
+Enter number of productions: 5
+Enter productions (format: A->aB|c, use 'e' for epsilon):
+E -> TE'
+E' -> +TE' | e
+T -> FT'     
+T' -> *FT' | e
+F -> id | (E)
+
+--- FIRST Sets ---
+FIRST(E): { i ( }
+FIRST(E'): { + e }
+FIRST(T): { i ( }
+FIRST(T'): { * e }
+FIRST(F): { i ( }
+
+--- FOLLOW Sets ---
+FOLLOW(E): { $ ) }
+FOLLOW(E'): { $   ) }
+FOLLOW(T): { + $   ) }
+FOLLOW(T'): { + $   ) }
+FOLLOW(F): { * + $   ) }
+
+--- Predictive Parse Table ---
+        +       *       i       (       )       $
+E       -       -       E->TE'  E->TE'  -       -
+E'      E'->+TE'-       -       -       E'->e   E'->e
+T       -       -       T->FT'  T->FT'  -       -
+T'      T'->e   T'->*FT'-       -       T'->e   T'->e
+F       -       -       F->id   F->(E)  -       -
+
+Enter input string to parse (end with $): id+id*id$
+
+--- Parsing Steps ---
+Stack                     Input                Action
+------------------------------------------------------------------
+E $                       i+i*i$               Apply E->TE'
+T E' $                    i+i*i$               Apply T->FT'
+F T' E' $                 i+i*i$               Apply F->id
+id T' E' $                i+i*i$               Match 'id'
+T' E' $                   +i*i$                Apply T'->e
+E' $                      +i*i$                Apply E'->+TE'
++ T E' $                  +i*i$                Match '+'
+T E' $                    i*i$                 Apply T->FT'
+F T' E' $                 i*i$                 Apply F->id
+id T' E' $                i*i$                 Match 'id'
+T' E' $                   *i$                  Apply T'->*FT'
+* F T' E' $               *i$                  Match '*'
+F T' E' $                 i$                   Apply F->id
+id T' E' $                i$                   Match 'id'
+T' E' $                   $                    Apply T'->e
+E' $                      $                    Apply E'->e
+$                         $                    Accept
+
+Input string is ACCEPTED.
