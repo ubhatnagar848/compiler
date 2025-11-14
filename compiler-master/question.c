@@ -1,3 +1,32 @@
+Table of Contents
+
+Expt. No	Date	Name of Experiment	Page No
+1	August 1, 2025	Implementation of Deterministic Finite Automaton (DFA) from regular grammar using C language. 	3
+2	August 1, 2025	 Implement a C program to find a regular grammar from Deterministic Finite Automaton (DFA).	10
+3	August 1, 2025	 Implementation of Deterministic Finite Automaton (DFA) from Non-deterministic Finite Automata (NFA) without ε-edges using C language.	15
+4	August 1, 2025	Implement a DFA in LEX code which accepts odd number of a and even number of b’s. 
+Implement a DFA in LEX code which accepts strings over {a, b, c} having bca as substring.  	28
+5	August 22, 2025	Construct a lexical analyser
+Identify the tokens from simple statement as input stored in a linear array Identify the tokens from small program as input stored in a text file. Identify the tokens from small program as input get it from the user and store it in a text file	35
+6	August 22, 2025	Implement LEX code to:
+count the frequency of the given word in a file 
+replace a word with another taking input from file. 
+find the length of the longest word. 
+construct a lexical analyser using LEX tool.	51
+7	September 5, 2025	Construct Predictive parse table using C language.	61
+8	September 5, 2025	Construct precedence table for the given operator grammar and perform the parsing for the given string.	79
+9	September 19, 2025	Construct Simple LR (SLR) parse table using C language and implement the LR parsing algorithm, get both parse table and input string are inputs.	106
+10	September 19, 2025	Construct Canonical LR (CLR) parse table using C language implement the LR parsing algorithm, get both parse table and input string are inputs. Use C language for implementation.	129
+11	September 19, 2025	Construct Look-Ahead LR (LALR) parse table using C language implement the LR parsing algorithm, get both parse table and input string are inputs. Use C language for implementation. 	161
+12	October 3, 2025	Implementation of a simple calculator using LEX and YACC tools. 	193
+13	October 3, 2025	Implementation of Abstract syntax tree –Infix to postfix using the LEX and YACC tools. 	196
+14	October 3, 2025	Using LEX and YACC tools to recognize the strings of the following context-free languages: 
+L(G) = { anbm  / m ≠ n} 
+L(G) = { ab (bbaa)n bba (ba)n / n ≥ 0}	201
+15	October 17, 2025	Implementation of three address codes for a simple program using LEX and YACC tools. 	206
+16	October 17, 2025	Implement simple code optimization techniques.	214
+17	October 17, 2025	Implement Back end of the compiler for which three address code is given as input and the 8086-assembly language is produced as output. 	222
+
 Experiment 1:
 Aim
 To develop a Deterministic Finite Automaton (DFA) from a given regular grammar using the C programming language, and to verify whether a provided input string is accepted by the DFA. The program should also display the transition table and the sequence of transitions for the string.
@@ -5114,7 +5143,7 @@ void generateAssembly(char *op, char *arg1, char *arg2, char *result) {
  
         printf("MOV BX, %s\n", arg2); 
  
-        printf("MUL BX\n"); 
+        printf("MUL AX, BX\n"); 
  
         printf("MOV %s, AX\n", result); 
  
@@ -5124,7 +5153,7 @@ void generateAssembly(char *op, char *arg1, char *arg2, char *result) {
  
         printf("MOV BX, %s\n", arg2); 
  
-        printf("DIV BX\n"); 
+        printf("DIV AX, BX\n"); 
  
         printf("MOV %s, AX\n", result); 
  
@@ -5203,3 +5232,10 @@ int main() {
     return 0; 
  
 }
+
+/*
+
+S = rA | e
+A = rAA | lS
+
+*/
